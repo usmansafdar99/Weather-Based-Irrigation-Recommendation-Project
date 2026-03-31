@@ -1,0 +1,14 @@
+.venv/
+.vscode/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Model artifacts and generated reports
+models/
+reports/
+
+# Streamlit local artifacts
+.streamlit/
+

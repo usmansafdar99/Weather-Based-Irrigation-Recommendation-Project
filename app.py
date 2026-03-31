@@ -11,13 +11,19 @@ import streamlit as st
 from src.config import DATA_PATH
 from src.data import load_dataset
 from src.irrigation_logic import classify_water_requirement
-from src.modeling import load_model
+from src.modeling import load_model, train_and_save_default_model
 from src.preprocessing import engineer_features
 
 
 @st.cache_resource
 def get_model():
-    return load_model()
+    try:
+        return load_model()
+    except FileNotFoundError:
+        # Streamlit Community Cloud: model artifact is often not committed.
+        # Train once and cache the trained pipeline in-memory.
+        with st.spinner("Training model for the first time (one-time setup)..."):
+            return train_and_save_default_model()
 
 
 @st.cache_data

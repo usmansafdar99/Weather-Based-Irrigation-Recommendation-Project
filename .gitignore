@@ -5,6 +5,11 @@ __pycache__/
 *.pyo
 *.pyd
 
+# OS / junk files
+.DS_Store
+Thumbs.db
+__MACOSX/
+
 # Model artifacts and generated reports
 models/
 reports/
